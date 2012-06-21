@@ -20,7 +20,7 @@ function Tree.ingest_string(tree, word)
     tree[head] = tree[head] or { }
     Tree.ingest_string(tree[head], tail)
   else
-    tree[0] = 0
+    tree[0] = ''
   end
 end
 
