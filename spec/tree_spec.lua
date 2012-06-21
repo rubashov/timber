@@ -4,12 +4,13 @@ require 'tree'
 describe['A tree'] = function()
   before = function()
     tree = Tree:new()
-    words = { 'biography', 'biographic', 'biographical', 'biographer', 'biped' }
+    words = { 'biography', 'biographic', 'biographical', 'biographer', 'biped', '' }
   end
 
   it['ingests the words'] = function()
     tree:ingest(words)
-    print('Size of tree is ' .. tree:size())
+    expect(table.size(tree.tree)).should_be(1)
     expect(tree:size()).should_be(5)
+    table.print(tree.tree)
   end
 end
