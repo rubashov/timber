@@ -13,6 +13,11 @@ function table.print(t, indent)
   for k, v in pairs(t) do
     for i = 1, indent do io.write('  ') end
     print(k)
-    table.print(v, indent + 1)
+    if type(v) == 'table' then
+      table.print(v, indent + 1)
+    else
+      for i = 1, indent do io.write('  ') end
+      print(tostring(v))
+    end
   end
 end
