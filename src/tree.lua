@@ -18,11 +18,9 @@ function Tree.ingest_string(tree, word)
     local head, tail = word:sub(1, 1), word:sub(2, word:len())
 
     tree[head] = tree[head] or { }
-    if lg > 1 then
-      Tree.ingest_string(tree[head], tail)
-    else -- lg == 1, head is the last character in the word
-      tree[head][0] = 0
-    end
+    Tree.ingest_string(tree[head], tail)
+  else
+    tree[0] = 0
   end
 end
 
