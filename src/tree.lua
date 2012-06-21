@@ -21,7 +21,7 @@ function Tree.ingest_string(tree, word)
     if lg > 1 then
       Tree.ingest_string(tree[head], tail)
     else -- lg == 1, head is the last character in the word
-      tree[head] = { ['\0'] = 0 }
+      tree[head][0] = 0
     end
   end
 end
@@ -42,7 +42,7 @@ function Tree.tree_size(tree)
 
   for head, tail in pairs(tree) do
     local s
-    if head == '\0' then
+    if head == 0 then
       s = 1
     else
       s = Tree.tree_size(tail)
