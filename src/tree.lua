@@ -55,3 +55,19 @@ end
 function Tree:size()
   return Tree.tree_size(self.tree)
 end
+
+function Tree.tree_dump(leader, tree, words)
+  for head, tail in pairs(tree) do
+    if head ~= 0 then
+      Tree.tree_dump(leader .. head, tail, words)
+    else
+      table.insert(words, leader)
+    end
+  end
+end
+
+function Tree:dump()
+  words = { }
+  Tree.tree_dump('', self.tree, words)
+  return words
+end
