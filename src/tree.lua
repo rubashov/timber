@@ -18,12 +18,15 @@ function Tree.ingest_string(tree, word)
     local head, tail = word:sub(1, 1), word:sub(2, word:len())
 
     tree[head] = tree[head] or { }
-    Tree.ingest_string(tree[head], tail)
+    if lg > 1 then
+      Tree.ingest_string(tree[head], tail)
+    else -- lg == 1, head is the last character in the word
+      tree[head] = { ['\0'] = 0 }
+    end
   end
 end
 
 -- TODO: UTF-8!
--- TODO: prefixes
 function Tree:ingest(word)
   if type(word) == 'table' then
     for _, w in ipairs(word) do
@@ -39,7 +42,7 @@ function Tree.tree_size(tree)
 
   for head, tail in pairs(tree) do
     local s
-    if table.size(tail) == 0 then
+    if head == '\0' then
       s = 1
     else
       s = Tree.tree_size(tail)
