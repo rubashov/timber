@@ -38,13 +38,10 @@ function Tree.tree_size(tree)
   local n = 0
 
   for head, tail in pairs(tree) do
-    if head == 'h' then print('Size: ' .. table.size(tail)) end
     local s
     if table.size(tail) == 0 then
-      print'a'
       s = 1
     else
-      print'b'
       s = Tree.tree_size(tail)
     end
 
