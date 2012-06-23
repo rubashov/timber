@@ -28,4 +28,10 @@ describe['A tree'] = function()
     print(tree:dump())
     expect(table.size(tree:dump())).should_be(6)
   end
+
+  it['removes one word'] = function()
+    tree:ingest(words)
+    tree:delete('biographic')
+    expect(table.size(tree:dump())).should_be(5)
+  end
 end

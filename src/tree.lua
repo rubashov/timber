@@ -71,3 +71,21 @@ function Tree:dump()
   Tree.tree_dump('', self.tree, words)
   return words
 end
+
+function Tree.tree_delete(tree, word)
+  if word ~= '' then
+    local head, tail = word:sub(1, 1), word:sub(2, word:len())
+    local t = tree[head]
+    if t then
+      Tree.tree_delete(t, tail)
+    end
+  else
+    if tree[0] == '' then
+      tree[0] = nil
+    end
+  end
+end
+
+function Tree:delete(word)
+  Tree.tree_delete(self.tree, word)
+end
