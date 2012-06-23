@@ -1,0 +1,250 @@
+$ patgen dict.0 /dev/null patterns.0-0 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min, right_hyphen_min: 1 1
+left_hyphen_min = 1, right_hyphen_min = 1, 3 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 2 missed
+0.00 %, 0.00 %, 100.00 %
+2 patterns, 258 nodes in count trie, triec_max = 259
+1 good and 0 bad patterns added (more to come)
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 257 nodes, trie_max = 257, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+1 good, 0 bad, 1 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 258 nodes in count trie, triec_max = 260
+1 good and 1 bad patterns added 
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 258 nodes, trie_max = 260, 3 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+1 patterns, 257 nodes in count trie, triec_max = 257
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 259 nodes, trie_max = 260, 4 outputs
+1 nodes and 2 outputs deleted
+total of 2 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+
+----
+
+$ patgen dict /dev/null patterns.0-1 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 1, right_hyphen_min = 1, 3 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 2 missed
+0.00 %, 0.00 %, 100.00 %
+2 patterns, 258 nodes in count trie, triec_max = 259
+1 good and 0 bad patterns added (more to come)
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 257 nodes, trie_max = 257, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+1 good, 0 bad, 1 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 258 nodes in count trie, triec_max = 260
+1 good and 1 bad patterns added 
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 258 nodes, trie_max = 260, 3 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+1 patterns, 257 nodes in count trie, triec_max = 257
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 259 nodes, trie_max = 260, 4 outputs
+1 nodes and 2 outputs deleted
+total of 2 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+
+----
+
+$ patgen dict.1 /dev/null patterns.1 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 1, right_hyphen_min = 1, 3 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 1 missed
+0.00 %, 0.00 %, 100.00 %
+1 patterns, 257 nodes in count trie, triec_max = 257
+1 good and 0 bad patterns added 
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 257 nodes, trie_max = 257, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+1 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 257 nodes, trie_max = 257, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+1 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 257 nodes, trie_max = 257, 1 outputs
+0 nodes and 0 outputs deleted
+total of 1 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+1 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+
+----
+
+$ patgen dict.2 /dev/null patterns.2 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 1, right_hyphen_min = 1, 3 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 2 missed
+0.00 %, 0.00 %, 100.00 %
+2 patterns, 258 nodes in count trie, triec_max = 258
+2 good and 0 bad patterns added 
+finding 2 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 258 nodes, trie_max = 259, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 258 nodes, trie_max = 259, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 258 nodes, trie_max = 259, 1 outputs
+0 nodes and 0 outputs deleted
+total of 2 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+
+----
+
+$ patgen dict.3 /dev/null patterns.3 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 1, right_hyphen_min = 1, 4 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 2 missed
+0.00 %, 0.00 %, 100.00 %
+3 patterns, 259 nodes in count trie, triec_max = 259
+1 good and 1 bad patterns added (more to come)
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 258 nodes, trie_max = 258, 2 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+1 good, 0 bad, 1 missed
+50.00 %, 0.00 %, 50.00 %
+3 patterns, 259 nodes in count trie, triec_max = 261
+1 good and 2 bad patterns added 
+finding 1 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 260 nodes, trie_max = 262, 5 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+2 patterns, 258 nodes in count trie, triec_max = 258
+0 good and 2 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 262 nodes, trie_max = 263, 6 outputs
+4 nodes and 4 outputs deleted
+total of 2 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+2 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+
+----
+
+$ patgen dict.4 /dev/null patterns.4 trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 1, right_hyphen_min = 1, 4 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 1
+pat_start, pat_finish: 2 2
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 3 missed
+0.00 %, 0.00 %, 100.00 %
+3 patterns, 259 nodes in count trie, triec_max = 259
+3 good and 0 bad patterns added 
+finding 3 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 259 nodes, trie_max = 259, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+3 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 259 nodes, trie_max = 259, 1 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+3 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 0 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 259 nodes, trie_max = 259, 1 outputs
+0 nodes and 0 outputs deleted
+total of 3 patterns at hyph_level 1
+hyphenate word list? y
+writing pattmp.1
+ 
+3 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
