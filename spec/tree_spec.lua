@@ -10,6 +10,11 @@ describe['A tree'] = function()
     words2 = { 'biographical', 'biographic' }
   end
 
+  it['inserts one word'] = function()
+    tree:insert(words[1])
+    expect(tree:size()).should_be(1)
+  end
+
   it['ingests the words'] = function()
     tree:ingest(words)
     expect(tree:size()).should_be(6)
