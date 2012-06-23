@@ -22,4 +22,10 @@ describe['A tree'] = function()
     tree2:ingest(words2)
     expect(tree2:size()).should_be(2)
   end
+
+  it['dumps the words'] = function()
+    tree:ingest(words)
+    print(tree:dump())
+    expect(table.size(tree:dump())).should_be(6)
+  end
 end
