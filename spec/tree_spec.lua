@@ -44,12 +44,11 @@ describe['A tree'] = function()
   it['matches one word'] = function()
     tree:ingest({ 'bio' })
     for _, word in ipairs({ 'Albion', 'amphibious', 'biography', 'dubious', }) do
-      -- expect(tree:match(word)).should_be(true)
+      expect(tree:match(word)).should_be(true)
     end
 
-    -- for _, word in ipairs({ 'oboist', 'bibliography', 'Fibonacci' }) do 
-    for _, word in ipairs({ 'oboist' }) do
-      -- expect(tree:match(word)).should_be(false)
+    for _, word in ipairs({ 'oboist', 'bibliography', 'Fibonacci' }) do 
+      expect(tree:match(word)).should_be(false)
       print'FOO'
       print(word .. ': ' .. tostring(tree:match(word)))
       print'BAR'

@@ -8,7 +8,7 @@ Tree.INITIAL = 'INITIAL'
 Tree.PROCESSING = 'PROCESSING'
 
 function Tree:new()
-  local o = { tree = { }, state = Tree.INITIAL }
+  local o = { tree = { } }
   self.__index = self
   setmetatable(o, self)
 
@@ -93,43 +93,41 @@ function Tree.delete(tree, word)
   end
 end
 
-function Tree.match(tree, word)
+function Tree.match(tree, word, state)
   --[==[ print'--- DEBUG ---'
   print("tree is a " .. type(tree))
   print'--- EODBG ---' ]==]
   if tree.tree then tree = tree.tree end
+  if not state then state = Tree.INITIAL end
 
-  if tree.state == Tree.INITIAL then
+  if state == Tree.INITIAL then
     if word ~= '' then
       local head, tail = word:sub(1, 1), word:sub(2, word:len())
       local t = tree[head]
       if t then
-        t.state = Tree.PROCESSING
-        print(0)
-        return Tree.match(t, tail)
+        print(0 .. ': ' .. word)
+        return Tree.match(t, tail, Tree.PROCESSING)
       else
-        tree.state = Tree.INITIAL -- Kind of useless, but makes the code more explicit
-        print(1)
-        return Tree.match(tree, tail)
+        print(1 .. ': ' .. word)
+        return Tree.match(tree, tail, Tree.INITIAL)
       end
     else
-      print(2)
+      print(2 .. ': ' .. word)
       if tree[0] == '' then return true else return false end
     end
-  elseif tree.state == Tree.PROCESSING then
+  elseif state == Tree.PROCESSING then
     if word ~= '' then
       local head, tail = word:sub(1, 1), word:sub(2, word:len())
       local t = tree[head]
       if t then
-        t.state = Tree.PROCESSING
-         print(3)
-        return Tree.match(t, tail)
+         print(3 .. ': ' .. word)
+        return Tree.match(t, tail, Tree.PROCESSING)
       else
-        print(4)
-        return false
+        print(4 .. ': ' .. word)
+        if tree[0] == '' then return true else return false end
       end
     else
-      print(5)
+      print(5 .. ': ' .. word)
       if tree[0] == '' then return true else return false end
     end
   end
