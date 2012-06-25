@@ -97,7 +97,10 @@ function Tree.match(tree, word, state)
   --[==[ print'--- DEBUG ---'
   print("tree is a " .. type(tree))
   print'--- EODBG ---' ]==]
-  if tree.tree then tree = tree.tree end
+  if tree.tree then
+    tree = tree.tree
+    tree.root = tree
+  end
   if not state then state = Tree.INITIAL end
 
   if state == Tree.INITIAL then
@@ -105,6 +108,7 @@ function Tree.match(tree, word, state)
       local head, tail = word:sub(1, 1), word:sub(2, word:len())
       local t = tree[head]
       if t then
+        t.root = tree.root
         print(0 .. ': ' .. word)
         return Tree.match(t, tail, Tree.PROCESSING)
       else
@@ -120,11 +124,16 @@ function Tree.match(tree, word, state)
       local head, tail = word:sub(1, 1), word:sub(2, word:len())
       local t = tree[head]
       if t then
+         t.root = tree.root
          print(3 .. ': ' .. word)
         return Tree.match(t, tail, Tree.PROCESSING)
       else
         print(4 .. ': ' .. word)
-        if tree[0] == '' then return true else return false end
+        if tree[0] == '' then
+          return true
+        else
+          return Tree.match(tree.root, word, Tree.INITIAL)
+        end
       end
     else
       print(5 .. ': ' .. word)
