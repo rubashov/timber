@@ -43,7 +43,7 @@ describe['A tree'] = function()
 
   it['matches one word'] = function()
     tree:ingest({ 'bio' })
-    for _, word in ipairs({ 'Albion', 'amphibious', 'biography', 'dubious', }) do
+    for _, word in ipairs({ 'Albion', 'amphibious', 'biography', 'dubious', 'obobiost' }) do
       expect(tree:match(word)).should_be(true)
     end
 
