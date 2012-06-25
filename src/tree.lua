@@ -4,8 +4,11 @@ require 'l-table'
 
 Tree = { }
 
+Tree.INITIAL = 'INITIAL'
+Tree.PROCESSING = 'PROCESSING'
+
 function Tree:new()
-  local o = { tree = { } }
+  local o = { tree = { }, state = Tree.INITIAL }
   self.__index = self
   setmetatable(o, self)
 
@@ -93,23 +96,41 @@ end
 function Tree.match(tree, word)
   --[==[ print'--- DEBUG ---'
   print("tree is a " .. type(tree))
-  print'--- EODBB ---' ]==]
+  print'--- EODBG ---' ]==]
   if tree.tree then tree = tree.tree end
 
-  print(word)
-  if word ~= '' then
-    local head, tail = word:sub(1, 1), word:sub(2, word:len())
-    local t = tree[head]
-    if t then
-      return Tree.match(t, tail)
+  if tree.state == Tree.INITIAL then
+    if word ~= '' then
+      local head, tail = word:sub(1, 1), word:sub(2, word:len())
+      local t = tree[head]
+      if t then
+        t.state = Tree.PROCESSING
+        print(0)
+        return Tree.match(t, tail)
+      else
+        tree.state = Tree.INITIAL -- Kind of useless, but makes the code more explicit
+        print(1)
+        return Tree.match(tree, tail)
+      end
     else
-      return Tree.match(tree, tail)
+      print(2)
+      if tree[0] == '' then return true else return false end
     end
-  else
-    if tree[0] == '' then
-      return true
+  elseif tree.state == Tree.PROCESSING then
+    if word ~= '' then
+      local head, tail = word:sub(1, 1), word:sub(2, word:len())
+      local t = tree[head]
+      if t then
+        t.state = Tree.PROCESSING
+         print(3)
+        return Tree.match(t, tail)
+      else
+        print(4)
+        return false
+      end
     else
-      return false
+      print(5)
+      if tree[0] == '' then return true else return false end
     end
   end
 end
