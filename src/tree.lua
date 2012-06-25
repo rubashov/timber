@@ -94,12 +94,7 @@ function Tree.delete(tree, word)
 end
 
 function string.chop(str)
-  local l = str:len()
-  if l > 0 then
-    return str:sub(1, 1), str:sub(2, l)
-  else
-    return '', ''
-  end
+  return str:sub(1, 1), str:sub(2, str:len())
 end
 
 function Tree.match(tree, word, state)
@@ -122,15 +117,15 @@ function Tree.match(tree, word, state)
   if t then
     t.root = tree.root
     return Tree.match(t, tail, Tree.PROCESSING)
-  end
-
-  if state == Tree.INITIAL then
-    return Tree.match(tree, tail, Tree.INITIAL)
-  elseif state == Tree.PROCESSING then
-    if tree[0] == '' then
-      return true
-    else
-      return Tree.match(tree.root, word, Tree.INITIAL)
+  else
+    if state == Tree.INITIAL then
+      return Tree.match(tree, tail, Tree.INITIAL)
+    elseif state == Tree.PROCESSING then
+      if tree[0] == '' then
+        return true
+      else
+        return Tree.match(tree.root, word, Tree.INITIAL)
+      end
     end
   end
 end
