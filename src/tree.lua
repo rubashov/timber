@@ -89,3 +89,27 @@ function Tree.delete(tree, word)
     end
   end
 end
+
+function Tree.match(tree, word)
+  --[==[ print'--- DEBUG ---'
+  print("tree is a " .. type(tree))
+  print'--- EODBB ---' ]==]
+  if tree.tree then tree = tree.tree end
+
+  print(word)
+  if word ~= '' then
+    local head, tail = word:sub(1, 1), word:sub(2, word:len())
+    local t = tree[head]
+    if t then
+      return Tree.match(t, tail)
+    else
+      return Tree.match(tree, tail)
+    end
+  else
+    if tree[0] == '' then
+      return true
+    else
+      return false
+    end
+  end
+end
