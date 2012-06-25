@@ -49,9 +49,6 @@ describe['A tree'] = function()
 
     for _, word in ipairs({ 'oboist', 'bibliography', 'Fibonacci' }) do 
       expect(tree:match(word)).should_be(false)
-      print'FOO'
-      print(word .. ': ' .. tostring(tree:match(word)))
-      print'BAR'
     end
   end
 end
