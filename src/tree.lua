@@ -94,9 +94,6 @@ function Tree.delete(tree, word)
 end
 
 function Tree.match(tree, word, state)
-  --[==[ print'--- DEBUG ---'
-  print("tree is a " .. type(tree))
-  print'--- EODBG ---' ]==]
   if tree.tree then
     tree = tree.tree
     tree.root = tree
@@ -109,14 +106,11 @@ function Tree.match(tree, word, state)
       local t = tree[head]
       if t then
         t.root = tree.root
-        print(0 .. ': ' .. word)
         return Tree.match(t, tail, Tree.PROCESSING)
       else
-        print(1 .. ': ' .. word)
         return Tree.match(tree, tail, Tree.INITIAL)
       end
     else
-      print(2 .. ': ' .. word)
       if tree[0] == '' then return true else return false end
     end
   elseif state == Tree.PROCESSING then
@@ -125,10 +119,8 @@ function Tree.match(tree, word, state)
       local t = tree[head]
       if t then
          t.root = tree.root
-         print(3 .. ': ' .. word)
         return Tree.match(t, tail, Tree.PROCESSING)
       else
-        print(4 .. ': ' .. word)
         if tree[0] == '' then
           return true
         else
@@ -136,7 +128,6 @@ function Tree.match(tree, word, state)
         end
       end
     else
-      print(5 .. ': ' .. word)
       if tree[0] == '' then return true else return false end
     end
   end
