@@ -93,6 +93,15 @@ function Tree.delete(tree, word)
   end
 end
 
+function string.chop(str)
+  local l = str:len()
+  if l > 0 then
+    return str:sub(1, 1), str:sub(2, l)
+  else
+    return '', ''
+  end
+end
+
 function Tree.match(tree, word, state)
   if tree.tree then
     tree = tree.tree
@@ -100,35 +109,28 @@ function Tree.match(tree, word, state)
   end
   if not state then state = Tree.INITIAL end
 
-  if state == Tree.INITIAL then
-    if word ~= '' then
-      local head, tail = word:sub(1, 1), word:sub(2, word:len())
-      local t = tree[head]
-      if t then
-        t.root = tree.root
-        return Tree.match(t, tail, Tree.PROCESSING)
-      else
-        return Tree.match(tree, tail, Tree.INITIAL)
-      end
+  if word == '' then
+    if tree[0] == '' then
+      return true
     else
-      if tree[0] == '' then return true else return false end
+      return false
     end
+  end
+
+  local head, tail = word:chop()
+  local t = tree[head]
+  if t then
+    t.root = tree.root
+    return Tree.match(t, tail, Tree.PROCESSING)
+  end
+
+  if state == Tree.INITIAL then
+    return Tree.match(tree, tail, Tree.INITIAL)
   elseif state == Tree.PROCESSING then
-    if word ~= '' then
-      local head, tail = word:sub(1, 1), word:sub(2, word:len())
-      local t = tree[head]
-      if t then
-         t.root = tree.root
-        return Tree.match(t, tail, Tree.PROCESSING)
-      else
-        if tree[0] == '' then
-          return true
-        else
-          return Tree.match(tree.root, word, Tree.INITIAL)
-        end
-      end
+    if tree[0] == '' then
+      return true
     else
-      if tree[0] == '' then return true else return false end
+      return Tree.match(tree.root, word, Tree.INITIAL)
     end
   end
 end
