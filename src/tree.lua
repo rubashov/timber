@@ -67,10 +67,10 @@ function Tree.dump(tree, leader, words)
   end
 
   for head, tail in pairs(tree) do
-    if head ~= 0 then
-      Tree.dump(tail, leader .. head, words)
-    else
+    if head == 0 then
       table.insert(words, leader)
+    elseif type(head) == 'string' and head:len() == 1 then
+      Tree.dump(tail, leader .. head, words)
     end
   end
 
