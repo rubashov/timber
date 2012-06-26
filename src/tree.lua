@@ -98,19 +98,14 @@ function string.chop(str)
 end
 
 function Tree.match(tree, word)
-  if table.size(Tree.matches(tree, word)) > 0 then
-    return true
-  else
-    return false
-  end
+  return table.size(Tree.matches(tree, word)) > 0
 end
 
-function Tree.matches(tree, word, state, matches, start)
+function Tree.matches(tree, word, matches, start)
   if tree.tree then
     tree = tree.tree
     tree.root = tree
   end
-  if not state then state = Tree.INITIAL end
   if not matches then matches = { } end
   if not start then start = '' end
   if not n then n = 0 end
@@ -118,16 +113,14 @@ function Tree.matches(tree, word, state, matches, start)
   if word ~= '' then
     local head, tail = word:chop()
     local t = tree[head]
-    Tree.matches(tree.root, tail, Tree.INITIAL, matches, '')
+    Tree.matches(tree.root, tail, matches, '')
     if t then
       t.root = tree.root
-      Tree.matches(t, tail, Tree.PROCESSING, matches, start ..  head)
+      Tree.matches(t, tail, matches, start ..  head)
     else
-      if state == Tree.PROCESSING then
-        if tree[0] == '' then
-          -- TODO Figure out what’s happening
-          matches[start] = true
-        end
+      if tree[0] == '' then
+        -- TODO Figure out what’s happening
+        matches[start] = true
       end
     end
   end
