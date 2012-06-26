@@ -115,14 +115,7 @@ function Tree.matches(tree, word, state, matches, start)
   if not start then start = '' end
   if not n then n = 0 end
 
-  if word == '' then
-    if tree[0] == '' then
-      -- table.insert(matches, start)
-      -- print("Inserting ‘" .. start .. "’")
-    else
-      -- matches
-    end
-  else
+  if word ~= '' then
     local head, tail = word:chop()
     local t = tree[head]
     Tree.matches(tree.root, tail, Tree.INITIAL, matches, '')
@@ -130,16 +123,10 @@ function Tree.matches(tree, word, state, matches, start)
       t.root = tree.root
       Tree.matches(t, tail, Tree.PROCESSING, matches, start ..  head)
     else
-      if state == Tree.INITIAL then
-        -- Tree.matches(tree, tail, Tree.INITIAL, matches, '')
-      elseif state == Tree.PROCESSING then
+      if state == Tree.PROCESSING then
         if tree[0] == '' then
           -- TODO Figure out what’s happening
-          print("table size is " .. #matches .. ", inserting " .. start)
-          -- table.insert(matches, start)
           matches[start] = true
-        else
-          -- Tree.matches(tree.root, word, Tree.INITIAL, matches, start)
         end
       end
     end

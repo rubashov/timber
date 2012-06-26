@@ -55,14 +55,7 @@ describe['A tree'] = function()
   it['looks for matching patterns'] = function()
     tree:ingest({ 'am', 'phi', 'bio', 'boi', 'an' })
     local t = tree:matches('amphibious')
-    print'--- DEBUG ---'
-    for k, v in pairs(t) do
-      print(k, v)
-    end
-    print'--- DEBUG ---'
+
     expect(table.size(t)).should_be(3)
-    for k, v in pairs(tree:dump()) do
-      print(k, v)
-    end
   end
 end
