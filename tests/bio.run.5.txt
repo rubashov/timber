@@ -1,0 +1,246 @@
+$ patgen bio.dict /dev/null bio.5.tree bio.trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 2, right_hyphen_min = 2, 12 letters
+0 patterns read in
+pattern trie has 256 nodes, trie_max = 256, 0 outputs
+hyph_start, hyph_finish: 1 2
+pat_start, pat_finish: 2 8
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 2, pat_dot = 1
+ 
+0 good, 0 bad, 8 missed
+0.00 %, 0.00 %, 100.00 %
+10 patterns, 266 nodes in count trie, triec_max = 271
+3 good and 5 bad patterns added (more to come)
+finding 4 good and 0 bad hyphens, efficiency = 1.33
+pattern trie has 264 nodes, trie_max = 267, 2 outputs
+processing dictionary with pat_len = 2, pat_dot = 0
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+9 patterns, 265 nodes in count trie, triec_max = 272
+0 good and 7 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 266 nodes, trie_max = 273, 5 outputs
+processing dictionary with pat_len = 2, pat_dot = 2
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+7 patterns, 263 nodes in count trie, triec_max = 265
+0 good and 5 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 3, pat_dot = 1
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 260 nodes in count trie, triec_max = 260
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 3, pat_dot = 2
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 260 nodes in count trie, triec_max = 260
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 3, pat_dot = 0
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 260 nodes in count trie, triec_max = 260
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 3, pat_dot = 3
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 260 nodes in count trie, triec_max = 260
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 4, pat_dot = 2
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 262 nodes in count trie, triec_max = 264
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 4, pat_dot = 1
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 262 nodes in count trie, triec_max = 262
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 4, pat_dot = 3
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 262 nodes in count trie, triec_max = 263
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 4, pat_dot = 0
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 262 nodes in count trie, triec_max = 262
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 4, pat_dot = 4
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 262 nodes in count trie, triec_max = 262
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 5, pat_dot = 2
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 264 nodes in count trie, triec_max = 265
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 5, pat_dot = 3
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 264 nodes in count trie, triec_max = 264
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 5, pat_dot = 1
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 264 nodes in count trie, triec_max = 265
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 5, pat_dot = 4
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+2 patterns, 264 nodes in count trie, triec_max = 264
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 268 nodes, trie_max = 273, 9 outputs
+processing dictionary with pat_len = 5, pat_dot = 0
+ 
+4 good, 0 bad, 4 missed
+50.00 %, 0.00 %, 50.00 %
+4 patterns, 266 nodes in count trie, triec_max = 274
+2 good and 1 bad patterns added (more to come)
+finding 2 good and 0 bad hyphens, efficiency = 1.00
+pattern trie has 273 nodes, trie_max = 279, 10 outputs
+processing dictionary with pat_len = 5, pat_dot = 5
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+1 patterns, 260 nodes in count trie, triec_max = 261
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 277 nodes, trie_max = 279, 11 outputs
+processing dictionary with pat_len = 6, pat_dot = 3
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+2 patterns, 266 nodes in count trie, triec_max = 266
+0 good and 1 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 281 nodes, trie_max = 283, 12 outputs
+processing dictionary with pat_len = 6, pat_dot = 2
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+2 patterns, 266 nodes in count trie, triec_max = 266
+0 good and 1 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 285 nodes, trie_max = 285, 12 outputs
+processing dictionary with pat_len = 6, pat_dot = 4
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+2 patterns, 266 nodes in count trie, triec_max = 266
+0 good and 1 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 289 nodes, trie_max = 289, 13 outputs
+processing dictionary with pat_len = 6, pat_dot = 1
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+1 patterns, 261 nodes in count trie, triec_max = 261
+0 good and 0 bad patterns added (more to come)
+finding 0 good and 0 bad hyphens 
+pattern trie has 289 nodes, trie_max = 289, 13 outputs
+processing dictionary with pat_len = 6, pat_dot = 0
+ 
+6 good, 0 bad, 2 missed
+75.00 %, 0.00 %, 25.00 %
+3 patterns, 263 nodes in count trie, triec_max = 270
+1 good and 2 bad patterns added 
+finding 2 good and 0 bad hyphens, efficiency = 2.00
+pattern trie has 295 nodes, trie_max = 302, 13 outputs
+processing dictionary with pat_len = 7, pat_dot = 3
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+1 patterns, 262 nodes in count trie, triec_max = 263
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 296 nodes, trie_max = 302, 13 outputs
+processing dictionary with pat_len = 7, pat_dot = 4
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+1 patterns, 262 nodes in count trie, triec_max = 262
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 298 nodes, trie_max = 302, 13 outputs
+processing dictionary with pat_len = 7, pat_dot = 2
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+1 patterns, 262 nodes in count trie, triec_max = 262
+0 good and 1 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 299 nodes, trie_max = 302, 13 outputs
+30 nodes and 11 outputs deleted
+total of 6 patterns at hyph_level 1
+ 
+pat_start, pat_finish: y
+Please enter two integers.
+1 1
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 1, pat_dot = 0
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 13 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 269 nodes, trie_max = 302, 3 outputs
+processing dictionary with pat_len = 1, pat_dot = 1
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 13 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 269 nodes, trie_max = 302, 4 outputs
+0 nodes and 2 outputs deleted
+total of 0 patterns at hyph_level 2
+hyphenate word list? y
+writing pattmp.2
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
