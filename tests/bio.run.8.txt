@@ -1,0 +1,31 @@
+$ patgen bio.dict bio.in.8.tree bio.8.tree bio.trans
+This is PATGEN, Version 2.4 (TeX Live 2011)
+left_hyphen_min = 2, right_hyphen_min = 2, 12 letters
+5 patterns read in
+pattern trie has 263 nodes, trie_max = 270, 5 outputs
+hyph_start, hyph_finish: 3 3
+pat_start, pat_finish: 1 1
+good weight, bad weight, threshold: 1 1 1
+processing dictionary with pat_len = 1, pat_dot = 0
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 13 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 263 nodes, trie_max = 270, 8 outputs
+processing dictionary with pat_len = 1, pat_dot = 1
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
+0 patterns, 256 nodes in count trie, triec_max = 256
+0 good and 13 bad patterns added 
+finding 0 good and 0 bad hyphens 
+pattern trie has 263 nodes, trie_max = 270, 11 outputs
+0 nodes and 6 outputs deleted
+total of 0 patterns at hyph_level 3
+hyphenate word list? y
+writing pattmp.3
+ 
+8 good, 0 bad, 0 missed
+100.00 %, 0.00 %, 0.00 %
