@@ -117,12 +117,12 @@ function Tree.matches(tree, word, matches, start)
     if t then
       t.root = tree.root
       Tree.matches(t, tail, matches, start ..  head)
-    else
-      if tree[0] == '' then
-        -- TODO Figure out what’s happening
-        matches[start] = true
-      end
     end
+  end
+
+  if tree[0] == '' then
+    -- TODO Figure out what’s happening
+    matches[start] = true
   end
 
   return matches

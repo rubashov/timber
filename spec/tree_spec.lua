@@ -58,4 +58,11 @@ describe['A tree'] = function()
 
     expect(table.size(t)).should_be(3)
   end
+
+  it['looks for more matching patterns'] = function()
+    tree:ingest({ 'am', 'amphi', 'amphibious' })
+    local t = tree:matches('amphibious')
+
+    expect(table.size(t)).should_be(3)
+  end
 end
