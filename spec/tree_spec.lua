@@ -61,5 +61,8 @@ describe['A tree'] = function()
     end
     print'--- DEBUG ---'
     expect(table.size(t)).should_be(3)
+    for k, v in pairs(tree:dump()) do
+      print(k, v)
+    end
   end
 end
