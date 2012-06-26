@@ -97,35 +97,48 @@ function string.chop(str)
   return str:sub(1, 1), str:sub(2, str:len())
 end
 
-function Tree.match(tree, word, state)
+function Tree.match(tree, word)
+  if table.size(Tree.matches(tree, word)) > 0 then
+    return true
+  else
+    return false
+  end
+end
+
+function Tree.matches(tree, word, state, matches, start)
   if tree.tree then
     tree = tree.tree
     tree.root = tree
   end
   if not state then state = Tree.INITIAL end
+  if not matches then matches = { } end
+  if not start then start = '' end
 
   if word == '' then
     if tree[0] == '' then
-      return true
+      table.insert(matches, start)
     else
-      return false
+      -- matches
     end
-  end
-
-  local head, tail = word:chop()
-  local t = tree[head]
-  if t then
-    t.root = tree.root
-    return Tree.match(t, tail, Tree.PROCESSING)
   else
-    if state == Tree.INITIAL then
-      return Tree.match(tree, tail, Tree.INITIAL)
-    elseif state == Tree.PROCESSING then
-      if tree[0] == '' then
-        return true
-      else
-        return Tree.match(tree.root, word, Tree.INITIAL)
+    local head, tail = word:chop()
+    local t = tree[head]
+    Tree.matches(tree.root, tail, Tree.INITIAL, matches, '')
+    if t then
+      t.root = tree.root
+      Tree.matches(t, tail, Tree.PROCESSING, matches, start ..  head)
+    else
+      if state == Tree.INITIAL then
+        return Tree.matches(tree, tail, Tree.INITIAL, matches, start ..  head)
+      elseif state == Tree.PROCESSING then
+        if tree[0] == '' then
+          table.insert(matches, start)
+        else
+          Tree.matches(tree.root, word, Tree.INITIAL, matches, start .. head)
+        end
       end
     end
   end
+
+  return matches
 end

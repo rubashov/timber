@@ -51,4 +51,15 @@ describe['A tree'] = function()
       expect(tree:match(word)).should_be(false)
     end
   end
+
+  it['looks for matching patterns'] = function()
+    tree:ingest({ 'am', 'phi', 'bio', 'boi', 'an' })
+    local t = tree:matches('amphibious')
+    print'--- DEBUG ---'
+    for k, v in pairs(t) do
+      print(k, v)
+    end
+    print'--- DEBUG ---'
+    expect(table.size(t)).should_be(3)
+  end
 end
