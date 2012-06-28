@@ -30,6 +30,14 @@ describe['A tree'] = function()
     expect(tree2:size()).should_be(2)
   end
 
+  it['ingests the words'] = function()
+    tree:ingest({ 'biog3raph1er', 'bio1g2raph1ic', 'bio1g2raph1ic1al', 'biog11raphy' })
+    expect(tree:size()).should_be(4)
+    local words = tree:dump(tree)
+    local words_should_be = { 'biographer', 'biographic', 'biographical', 'biography' }
+    expect(table.is_equal(words, words_should_be)).should_be(true)
+  end
+
   it['dumps the words'] = function()
     tree:ingest(words)
     expect(table.size(tree:dump())).should_be(6)

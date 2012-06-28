@@ -16,17 +16,30 @@ function Tree:new()
 end
 
 -- TODO: UTF-8!
-function Tree.insert(tree, word)
+function Tree.insert(tree, word, hyph, n)
   if tree.tree then tree = tree.tree end
+  if not hyph then hyph = { } end
+  if not n then n = 0 end
 
   local lg = word:len()
   if lg > 0 then
+    local num = ''
     local head, tail = word:sub(1, 1), word:sub(2, word:len())
+    -- TODO lpeg!
+    while head >= '0' and head <= '9' do
+      word = tail
+      head, tail = word:sub(1, 1), word:sub(2, word:len())
+      num = num .. head
+    end
+
+    if num ~= '' then
+      hyph[n] = tonumber(num)
+    end
 
     tree[head] = tree[head] or { }
-    Tree.insert(tree[head], tail)
+    Tree.insert(tree[head], tail, hyph, n + 1)
   else
-    tree[0] = ''
+    tree[0] = hyph
   end
 end
 
@@ -87,7 +100,7 @@ function Tree.delete(tree, word)
       Tree.delete(t, tail)
     end
   else
-    if tree[0] == '' then
+    if tree[0] then
       tree[0] = nil
     end
   end
@@ -120,10 +133,39 @@ function Tree.matches(tree, word, matches, start)
     end
   end
 
-  if tree[0] == '' then
+  if tree[0] then
     -- TODO Figure out what’s happening
     matches[start] = true
   end
 
   return matches
+end
+
+function table.is_equal(t1, t2)
+  local t1c, t2c = { }, { }
+
+  -- Shallow copy
+  -- TODO Implement deep one.
+  for k1, v1 in pairs(t1) do
+    t1c[k1] = v1
+  end
+
+  for k2, v2 in pairs(t2) do
+    t2c[k2] = v2
+  end
+
+  table.sort(t1c)
+  table.sort(t2c)
+
+  if table.size(t1c) ~= table.size(t2c) then
+    return false
+  end
+
+  for k1, v1 in pairs(t1c) do
+    if t2c[k1] ~= v1 then
+      return false
+    end
+  end
+
+  return true
 end
