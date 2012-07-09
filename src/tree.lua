@@ -122,6 +122,7 @@ function Tree.matches(tree, word, matches, start)
   if not matches then matches = { } end
   if not start then start = '' end
   if not n then n = 0 end
+  -- print(word, start)
 
   if word ~= '' then
     local head, tail = word:chop()
@@ -135,7 +136,13 @@ function Tree.matches(tree, word, matches, start)
 
   if tree[0] then
     -- TODO Figure out what’s happening
-    matches[start] = true
+    if matches[start] then
+      matches[start] = matches[start] + 1
+    else
+      matches[start] = 0
+    end
+
+    print(word, start, matches[start])
   end
 
   return matches
