@@ -44,12 +44,13 @@ function Tree.insert(tree, word, hyph, n)
   end
 end
 
-function Tree.ingest(tree, words)
+-- TODO: tree:ingest(word0, word1, word2, ...)
+function Tree.ingest(tree, words, ...)
   if type(words) == 'table' then
     for _, word in ipairs(words) do
       Tree.insert(tree, word)
     end
-  elseif type(word) == 'string' then -- ‘words’ is a single word after all.
+  elseif type(words) == 'string' then -- ‘words’ is a single word after all.
     Tree.insert(tree, words)
   end
 end

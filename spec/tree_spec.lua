@@ -38,6 +38,11 @@ describe['A tree'] = function()
     expect(table.is_equal(words, words_should_be)).should_be(true)
   end
 
+  it['ingests one word'] = function()
+    tree:ingest('biographer')
+    expect(tree:size()).should_be(1)
+  end
+
   it['dumps the words'] = function()
     tree:ingest(words)
     expect(table.size(tree:dump())).should_be(6)
