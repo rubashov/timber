@@ -18,7 +18,7 @@ describe['A tree'] = function()
     expect(tree:size()).should_be(2)
   end
 
-  it['ingests the words'] = function()
+  it['ingests the words (0)'] = function()
     tree:ingest(words)
     expect(tree:size()).should_be(6)
     table.print(tree.tree)
