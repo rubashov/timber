@@ -33,9 +33,6 @@ describe['A tree'] = function()
     -- Alternative syntax
     tree3 = Tree:new()
     tree3:ingest('biography', 'biographic', 'biographical', 'biographer', 'biped', '')
-    print'----------------------'
-    print(tree3:size())
-    print'----------------------'
     expect(tree3:size()).should_be(6)
   end
 
