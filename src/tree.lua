@@ -130,26 +130,20 @@ end
 function Tree.do_matches(tree, word, matches, start)
   if tree.tree then
     tree = tree.tree
-    tree.root = tree
   end
   if not matches then matches = { } end
   if not start then start = '' end
-  if not n then n = 0 end
-  -- print(word, start)
-  -- print("Matching " .. word .. ", start = " .. start .. ", " ..  table.size(matches) .. " so far.")
 
   if word ~= '' then
     local head, tail = word:chop()
     local t = tree[head]
-    -- Tree.matches(tree.root, tail, matches, '')
+
     if t then
-      t.root = tree.root
       Tree.do_matches(t, tail, matches, start ..  head)
     end
   end
 
   if tree[0] then
-    -- TODO Figure out what’s happening
     if matches[start] then
       matches[start] = matches[start] + 1
     else
