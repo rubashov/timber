@@ -3,6 +3,7 @@ require 'tree'
 
 describe['A tree'] = function()
   -- TODO contexts
+  -- TODO Don’t overwrite entry in the spec table!
 
   before = function()
     tree = Tree:new()
@@ -28,6 +29,14 @@ describe['A tree'] = function()
     tree2 = Tree:new()
     tree2:ingest(words2)
     expect(tree2:size()).should_be(2)
+
+    -- Alternative syntax
+    tree3 = Tree:new()
+    tree3:ingest('biography', 'biographic', 'biographical', 'biographer', 'biped', '')
+    print'----------------------'
+    print(tree3:size())
+    print'----------------------'
+    expect(tree3:size()).should_be(6)
   end
 
   it['ingests the words'] = function()

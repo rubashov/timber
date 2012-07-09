@@ -44,14 +44,21 @@ function Tree.insert(tree, word, hyph, n)
   end
 end
 
--- TODO: tree:ingest(word0, word1, word2, ...)
-function Tree.ingest(tree, words, ...)
-  if type(words) == 'table' then
-    for _, word in ipairs(words) do
-      Tree.insert(tree, word)
+function Tree.ingest(tree, word, ...)
+  if type(word) == 'table' then -- ‘word’ is actually a list of words.
+    for _, w in ipairs(word) do
+      Tree.insert(tree, w)
     end
-  elseif type(words) == 'string' then -- ‘words’ is a single word after all.
-    Tree.insert(tree, words)
+  elseif type(word) == 'string' then
+    Tree.insert(tree, word)
+  end
+
+  local n = select('#', ...)
+  for i = 1, n do
+    local w = select(i, ...)
+    if type(w) == 'string' then
+      Tree.insert(tree, w)
+    end -- TODO Otherwise raise some kind of exception?
   end
 end
 
