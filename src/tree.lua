@@ -114,7 +114,20 @@ function Tree.match(tree, word)
   return table.size(Tree.matches(tree, word)) > 0
 end
 
-function Tree.matches(tree, word, matches, start)
+function Tree.matches(tree, word)
+  matches = { }
+
+  local l = word:len()
+  while l > 0 do
+    Tree.do_matches(tree, word, matches)
+    _, word = word:chop()
+    l = l - 1
+  end
+
+  return matches
+end
+
+function Tree.do_matches(tree, word, matches, start)
   if tree.tree then
     tree = tree.tree
     tree.root = tree
@@ -123,14 +136,15 @@ function Tree.matches(tree, word, matches, start)
   if not start then start = '' end
   if not n then n = 0 end
   -- print(word, start)
+  -- print("Matching " .. word .. ", start = " .. start .. ", " ..  table.size(matches) .. " so far.")
 
   if word ~= '' then
     local head, tail = word:chop()
     local t = tree[head]
-    Tree.matches(tree.root, tail, matches, '')
+    -- Tree.matches(tree.root, tail, matches, '')
     if t then
       t.root = tree.root
-      Tree.matches(t, tail, matches, start ..  head)
+      Tree.do_matches(t, tail, matches, start ..  head)
     end
   end
 
