@@ -4,8 +4,9 @@ require 'l-table'
 
 Tree = { }
 
-Tree.INITIAL = 'INITIAL'
-Tree.PROCESSING = 'PROCESSING'
+function string.chop(str)
+  return str:sub(1, 1), str:sub(2, str:len())
+end
 
 function Tree:new()
   local o = { tree = { } }
@@ -24,11 +25,11 @@ function Tree.insert(tree, word, hyph, n)
   local lg = word:len()
   if lg > 0 then
     local num = ''
-    local head, tail = word:sub(1, 1), word:sub(2, word:len())
+    local head, tail = word:chop()
     -- TODO lpeg!
     while head >= '0' and head <= '9' do
       word = tail
-      head, tail = word:sub(1, 1), word:sub(2, word:len())
+      head, tail = word:chop()
       num = num .. head
     end
 
@@ -94,7 +95,7 @@ function Tree.delete(tree, word)
   if tree.tree then tree = tree.tree end
 
   if word ~= '' then
-    local head, tail = word:sub(1, 1), word:sub(2, word:len())
+    local head, tail = word:chop()
     local t = tree[head]
     if t then
       Tree.delete(t, tail)
@@ -104,10 +105,6 @@ function Tree.delete(tree, word)
       tree[0] = nil
     end
   end
-end
-
-function string.chop(str)
-  return str:sub(1, 1), str:sub(2, str:len())
 end
 
 function Tree.match(tree, word)
