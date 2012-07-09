@@ -14,7 +14,7 @@ describe['A tree'] = function()
   it['inserts and ingests one word'] = function()
     tree:insert(words[1])
     expect(tree:size()).should_be(1)
-    tree:insert(words[2])
+    tree:ingest(words[2])
     expect(tree:size()).should_be(2)
   end
 
@@ -42,11 +42,6 @@ describe['A tree'] = function()
     local words = tree:dump(tree)
     local words_should_be = { 'biographer', 'biographic', 'biographical', 'biography' }
     expect(table.is_equal(words, words_should_be)).should_be(true)
-  end
-
-  it['ingests one word'] = function()
-    tree:ingest('biographer')
-    expect(tree:size()).should_be(1)
   end
 
   it['dumps the words'] = function()
