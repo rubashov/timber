@@ -29,8 +29,8 @@ function Tree.insert(tree, word, hyph, n)
     -- TODO lpeg!
     while head >= '0' and head <= '9' do
       word = tail
-      head, tail = word:chop()
       num = num .. head
+      head, tail = word:chop()
     end
 
     if num ~= '' then
@@ -81,7 +81,7 @@ function Tree.size(tree)
   return n
 end
 
-function Tree.dump(tree, leader, words)
+function Tree.dump(tree, leader, words, with_hyph)
   if tree.tree then
     tree = tree.tree
     leader = ''
@@ -90,13 +90,33 @@ function Tree.dump(tree, leader, words)
 
   for head, tail in pairs(tree) do
     if head == 0 then
-      table.insert(words, leader)
+      if with_hyph then
+        local word = leader
+        local hyph = tail
+
+        local l = word:len()
+        if hyph[0] then s = tostring(hyph[0]) else s = "" end
+        for i = 1, l do
+          s = s .. word:sub(i, i)
+          if hyph[i] then
+            s = s .. tostring(hyph[i])
+          end
+        end
+
+        table.insert(words, s)
+      else
+        table.insert(words, leader)
+      end
     elseif type(head) == 'string' and head:len() == 1 then
-      Tree.dump(tail, leader .. head, words)
+      Tree.dump(tail, leader .. head, words, with_hyph)
     end
   end
 
   return words
+end
+
+function Tree.dump_patterns(tree)
+  return Tree.dump(tree, '', { }, true)
 end
 
 function Tree.delete(tree, word)

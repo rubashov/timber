@@ -9,6 +9,7 @@ describe['A tree'] = function()
     tree = Tree:new()
     words = { 'biography', 'biographic', 'biographical', 'biographer', 'biped', '' }
     words2 = { 'biographical', 'biographic' }
+    patterns = { 'biog3raph1er', 'bio1g2raph1ic', 'bio1g2raph1ic1al', 'biog11raphy' }
   end
 
   it['inserts and ingests one word'] = function()
@@ -18,7 +19,7 @@ describe['A tree'] = function()
     expect(tree:size()).should_be(2)
   end
 
-  it['ingests the words (0)'] = function()
+  it['ingests the plain words'] = function()
     tree:ingest(words)
     expect(tree:size()).should_be(6)
     table.print(tree.tree)
@@ -36,12 +37,15 @@ describe['A tree'] = function()
     expect(tree3:size()).should_be(6)
   end
 
-  it['ingests the words'] = function()
-    tree:ingest({ 'biog3raph1er', 'bio1g2raph1ic', 'bio1g2raph1ic1al', 'biog11raphy' })
+  it['ingests the words with hyphenation values, and re-reads them'] = function()
+    tree:ingest(patterns)
     expect(tree:size()).should_be(4)
     local words = tree:dump(tree)
     local words_should_be = { 'biographer', 'biographic', 'biographical', 'biography' }
     expect(table.is_equal(words, words_should_be)).should_be(true)
+
+    local dumped_patterns = tree:dump_patterns(tree)
+    expect(table.is_equal(patterns, dumped_patterns)).should_be(true)
   end
 
   it['dumps the words'] = function()
