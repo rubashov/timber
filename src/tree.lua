@@ -79,14 +79,24 @@ end
 function Tree.size(tree)
   if tree.tree then tree = tree.tree end
 
+   local size = Tree.do_size(tree) 
+   local tree_dot = tree['.']
+   if tree_dot then
+     return size + Tree.do_size(tree_dot) - 1
+   else
+     return size
+   end
+end
+
+function Tree.do_size(tree)
   local n = 0
 
   for head, tail in pairs(tree) do
     local s
-    if head == 0 or head == '.' then -- Not good FIXME
+    if head == 0 or head == '.' then
       s = 1
     else
-      s = Tree.size(tail)
+      s = Tree.do_size(tail)
     end
 
     n = n + s
