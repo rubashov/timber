@@ -17,13 +17,21 @@ function Tree:new()
 end
 
 -- TODO: UTF-8!
-function Tree.insert(tree, word, hyph, n)
+function Tree.insert(tree, word)
   if tree.tree then tree = tree.tree end
-  if not hyph then hyph = { } end
-  if not n then n = 0 end
+  local head, tail = word:chop()
+  if head == '.' then
+    tree['.'] = tree['.'] or { }
+    tree = tree['.']
+    word = tail
+  end
 
+  Tree.do_insert(tree, word, { }, 0)
+end
+
+function Tree.do_insert(tree, word, hyph, n)
   local lg = word:len()
-  if lg > 0 then
+  if lg > 0 and word:sub(1, 1) ~= '.' then
     local num = ''
     local head, tail = word:chop()
     -- TODO lpeg!
@@ -38,9 +46,15 @@ function Tree.insert(tree, word, hyph, n)
     end
 
     tree[head] = tree[head] or { }
-    Tree.insert(tree[head], tail, hyph, n + 1)
+    Tree.do_insert(tree[head], tail, hyph, n + 1)
   else
-    tree[0] = hyph
+    if lg == 0 then
+      tree[0] = hyph
+    elseif lg == 1 then
+      tree['.'] = hyph
+    else
+      print("Error: read pattern with a dot inside a word") -- TODO raise some exception
+    end
   end
 end
 
@@ -69,7 +83,7 @@ function Tree.size(tree)
 
   for head, tail in pairs(tree) do
     local s
-    if head == 0 then
+    if head == 0 or head == '.' then -- Not good FIXME
       s = 1
     else
       s = Tree.size(tail)
