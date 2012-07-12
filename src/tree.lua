@@ -17,6 +17,7 @@ function Tree:new()
 end
 
 -- TODO: UTF-8!
+-- Assumes dots only come at the very beginning or the very end of patterns.
 function Tree.insert(tree, word)
   if tree.tree then tree = tree.tree end
   local head, tail = word:chop()
@@ -54,6 +55,7 @@ function Tree.do_insert(tree, word, hyph, n)
       tree['.'] = hyph
     else
       print("Error: read pattern with a dot inside a word") -- TODO raise some exception
+      -- (Still proceeds for the moment).
     end
   end
 end
@@ -76,12 +78,13 @@ function Tree.ingest(tree, word, ...)
   end
 end
 
+-- Assumes dots only comes at the very beginning or the very end of patterns.
 function Tree.size(tree)
   if tree.tree then tree = tree.tree end
 
    local size = Tree.do_size(tree) 
    local tree_dot = tree['.']
-   if tree_dot then
+   if tree_dot then -- the initial dot is counted as a fake leaf in that case
      return size + Tree.do_size(tree_dot) - 1
    else
      return size
