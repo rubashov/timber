@@ -46,8 +46,12 @@ function Tree.do_insert(tree, word, hyph, n)
       hyph[n] = tonumber(num)
     end
 
-    tree[head] = tree[head] or { }
-    Tree.do_insert(tree[head], tail, hyph, n + 1)
+    if head == '' then -- the rest of the word may have been consumed by the number
+      tree[0] = hyph
+    else
+      tree[head] = tree[head] or { }
+      Tree.do_insert(tree[head], tail, hyph, n + 1)
+    end
   else
     if lg == 0 then
       tree[0] = hyph
@@ -146,6 +150,7 @@ function Tree.dump_patterns(tree)
   return Tree.dump(tree, '', { }, true)
 end
 
+-- FIXME for anchored (“dotted” patterns)
 function Tree.delete(tree, word)
   if tree.tree then tree = tree.tree end
 
