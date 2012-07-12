@@ -174,6 +174,9 @@ end
 function Tree.matches(tree, word)
   matches = { }
 
+  tree = tree.tree
+  if tree['.'] then Tree.do_matches(tree['.'], word, matches) end
+
   local l = word:len()
   while l > 0 do
     Tree.do_matches(tree, word, matches)
@@ -200,7 +203,8 @@ function Tree.do_matches(tree, word, matches, start)
     end
   end
 
-  if tree[0] then
+  -- FIXME This doesn’t return the actual pattern!  Bloody useless.
+  if tree[0] or (tree['.'] and word == '') then
     if matches[start] then
       matches[start] = matches[start] + 1
     else

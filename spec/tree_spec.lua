@@ -95,19 +95,10 @@ describe['A tree'] = function()
   end
 
   it['matches using patterns with dots'] = function()
-    -- tree:ingest(patterns_with_dots)
+    tree:ingest(patterns_with_dots)
     -- { '.ab1a', '.ab3l', '.abo2', '.ab3ol', '.ab1or', 'ab4ol.' }
-    tree:ingest { '.abo2', '.ab3ol', '.ab1or', 'ab4ol.' }
-    local t = tree:matches('.abol')
-    print'--- patterns ---'
-    -- rtable.pint -- woow!
-    table.print(tree)
-    print'--- matches  ---'
-    table.print(t)
-    print'---          ---'
-    what = tree['.'].a.b.o
-    print(type(what))
-    print'--- End of debug ---'
+    local t = tree:matches('abol')
+
     expect(table.size(t)).should_be(3)
   end
 end
