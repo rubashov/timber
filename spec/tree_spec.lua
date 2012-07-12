@@ -10,6 +10,8 @@ describe['A tree'] = function()
     words = { 'biography', 'biographic', 'biographical', 'biographer', 'biped', '' }
     words2 = { 'biographical', 'biographic' }
     patterns = { 'biog3raph1er', 'bio1g2raph1ic', 'bio1g2raph1ic1al', 'biog11raphy' }
+    patterns_with_dots = { '.ab1a', '.ab3l', '.abo2', '.ab3ol', '.ab1or', 'ab4ol.' }
+
   end
 
   it['inserts and ingests one word'] = function()
@@ -46,6 +48,14 @@ describe['A tree'] = function()
 
     local dumped_patterns = tree:dump_patterns(tree)
     expect(table.is_equal(patterns, dumped_patterns)).should_be(true)
+  end
+
+  it ['ingests words with hyphenation values and dots, and dumps them back'] = function()
+    tree:ingest(patterns_with_dots)
+    table.print(tree.tree)
+    expect(tree:size()).should_be(6)
+    local dumped_patterns = tree:dump_patterns(tree)
+    -- expect(table.is_equal(patterns_with_dots, dumped_patterns)).should_be(true)
   end
 
   it['dumps the words'] = function()
