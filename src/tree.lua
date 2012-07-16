@@ -219,6 +219,10 @@ function Tree.do_matches(tree, word, matches, start)
 end
 
 function table.is_equal(t1, t2)
+  if table.size(t1) ~= table.size(t2) then
+    return false
+  end
+
   local t1c, t2c = { }, { }
 
   -- Shallow copy
@@ -233,10 +237,6 @@ function table.is_equal(t1, t2)
 
   table.sort(t1c)
   table.sort(t2c)
-
-  if table.size(t1c) ~= table.size(t2c) then
-    return false
-  end
 
   for k1, v1 in pairs(t1c) do
     if t2c[k1] ~= v1 then
