@@ -121,13 +121,16 @@ function Tree.dump(tree, leader, words, with_hyph)
   end
 
   for head, tail in pairs(tree) do
-    if head == 0 then
+    if head == 0 or (head == '.' and leader ~= '') then -- FIXME not ideal
+      if head == '.' then leader = leader .. '.' end
+
       if with_hyph then
-        local word = leader
+        if leader:sub(1, 1) == '.' then dot = '.' else dot = '' end
+        local word = string.gsub(leader, '^%.', '')
         local hyph = tail
 
         local l = word:len()
-        if hyph[0] then s = tostring(hyph[0]) else s = "" end
+        if hyph[0] then s = dot + tostring(hyph[0]) else s = dot end
         for i = 1, l do
           s = s .. word:sub(i, i)
           if hyph[i] then
