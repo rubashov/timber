@@ -208,13 +208,7 @@ function Tree.do_matches(tree, word, matches, start)
   if tree[0] or (tree['.'] and word == '') then
     if tree['.'] then start = start .. '.' end
 
-    if matches[start] then
-      matches[start] = matches[start] + 1
-    else
-      matches[start] = 0
-    end
-
-    print(word, start, matches[start])
+    table.insert(matches, start)
   end
 
   return matches
