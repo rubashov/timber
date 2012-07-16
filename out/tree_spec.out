@@ -1,5 +1,4 @@
 0
-
 b
   i
     o
@@ -11,23 +10,18 @@ b
                 e
                   r
                     0
-                    
                 i
                   c
                     0
-                    
                     a
                       l
                         0
-                        
                 y
                   0
-                  
     p
       e
         d
           0
-          
 1
 
 2
@@ -40,10 +34,63 @@ biographical
 biography
 6
 biped
+a
+  b
+    o
+      l
+        .
+          2
+          4
+.
+  a
+    b
+      o
+        0
+          3
+          2
+        l
+          0
+            2
+            3
+        r
+          0
+            2
+            1
+      l
+        0
+          2
+          3
+      a
+        0
+          2
+          1
+phibious	am	0
+bious	phi	0
+us	bio	0
+	amphibious	0
+bious	amphi	0
+phibious	am	0
+	.abol	0
+l	.abo	0
+	abol.	0
+n	bio	0
+us	bio	0
+graphy	bio	0
+us	bio	0
+st	bio	0
 A tree
 ================================
- - ingests the words                                                   [ pass ]
+ - ingests the plain words                                             [ pass ]
+ - looks for more matching patterns                                    [ pass ]
+ - dumps the words                                                     [ pass ]
+ - looks for matching patterns                                         [ pass ]
+ - removes one word                                                    [ pass ]
+ - ingests words with hyphenation values and dots, and dumps them back [ pass ]
+ - matches using patterns with dots                                    [ pass ]
+ - ingests the words with hyphenation values, and re-reads them        [ pass ]
+ - inserts and ingests one word                                        [ pass ]
+ - matches one word                                                    [ pass ]
 =========  Summary  ============
-3 Expectations
-Passed : 3, Failed : 0, Success rate : 100.00 percent
+23 Expectations
+Passed : 23, Failed : 0, Success rate : 100.00 percent
 
