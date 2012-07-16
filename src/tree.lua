@@ -112,7 +112,6 @@ function Tree.do_size(tree)
   return n
 end
 
--- FIXME Review for dots.
 function Tree.dump(tree, leader, words, with_hyph)
   if tree.tree then
     tree = tree.tree

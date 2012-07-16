@@ -50,14 +50,8 @@ describe['A tree'] = function()
 
   it ['ingests words with hyphenation values and dots, and dumps them back'] = function()
     tree:ingest(patterns_with_dots)
-    table.print(tree.tree)
     expect(tree:size()).should_be(6)
     local dumped_patterns = tree:dump_patterns(tree)
-    print'----'
-    table.print(patterns_with_dots)
-    print'----'
-    table.print(dumped_patterns)
-    print'----'
     expect(table.is_equal(patterns_with_dots, dumped_patterns)).should_be(true)
   end
 
