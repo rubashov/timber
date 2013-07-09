@@ -119,7 +119,7 @@ function Tree.dump(tree, leader, words, with_hyph)
         local hyph = tail
 
         local l = word:len()
-        if hyph[0] then if string.find(tostring(hyph[0]), "table") then for k, v in pairs(hyph[0]) do print(k, v) end end s = tostring(hyph[0]) else s = '' end
+        if hyph[0] then s = tostring(hyph[0]) else s = '' end
         for i = 1, l do
           s = s .. word:sub(i, i)
           if hyph[i] then
