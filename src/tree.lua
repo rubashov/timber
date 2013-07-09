@@ -21,18 +21,13 @@ end
 function Tree.insert(tree, word)
   if tree.tree then tree = tree.tree end
   local head, tail = word:chop()
-  if head == '.' then
-    tree['.'] = tree['.'] or { }
-    tree = tree['.']
-    word = tail
-  end
 
   Tree.do_insert(tree, word, { }, 0)
 end
 
 function Tree.do_insert(tree, word, hyph, n)
   local lg = word:len()
-  if lg > 0 and word:sub(1, 1) ~= '.' then
+  if lg > 0 then
     local num = ''
     local head, tail = word:chop()
     -- TODO lpeg!
@@ -49,18 +44,16 @@ function Tree.do_insert(tree, word, hyph, n)
     if head == '' then -- the rest of the word may have been consumed by the number
       tree[0] = hyph
     else
+      if n > 0 and word:len() > 1 and word:sub(1, 1) == '.' then
+        print("Error: read pattern with a dot inside a word") -- TODO raise some exception
+        -- (Still proceeds for the moment).
+      end
+
       tree[head] = tree[head] or { }
       Tree.do_insert(tree[head], tail, hyph, n + 1)
     end
   else
-    if lg == 0 then
-      tree[0] = hyph
-    elseif lg == 1 then
-      tree['.'] = hyph
-    else
-      print("Error: read pattern with a dot inside a word") -- TODO raise some exception
-      -- (Still proceeds for the moment).
-    end
+    tree[0] = hyph
   end
 end
 
@@ -120,16 +113,13 @@ function Tree.dump(tree, leader, words, with_hyph)
   end
 
   for head, tail in pairs(tree) do
-    if head == 0 or (head == '.' and leader ~= '') then -- FIXME not ideal
-      if head == '.' then leader = leader .. '.' end
-
+    if head == 0 then
       if with_hyph then
-        if leader:sub(1, 1) == '.' then dot = '.' else dot = '' end
-        local word = string.gsub(leader, '^%.', '')
+        local word = leader
         local hyph = tail
 
         local l = word:len()
-        if hyph[0] then s = dot + tostring(hyph[0]) else s = dot end
+        if hyph[0] then if string.find(tostring(hyph[0]), "table") then for k, v in pairs(hyph[0]) do print(k, v) end end s = tostring(hyph[0]) else s = '' end
         for i = 1, l do
           s = s .. word:sub(i, i)
           if hyph[i] then
@@ -175,15 +165,15 @@ function Tree.match(tree, word)
 end
 
 function Tree.matches(tree, word)
+  dotted_word = '.' .. word .. '.'
   matches = { }
 
   tree = tree.tree
-  if tree['.'] then Tree.do_matches(tree['.'], word, matches, '.') end
 
-  local l = word:len()
+  local l = dotted_word:len()
   while l > 0 do
-    Tree.do_matches(tree, word, matches)
-    _, word = word:chop()
+    Tree.do_matches(tree, dotted_word, matches)
+    _, dotted_word = dotted_word:chop()
     l = l - 1
   end
 
@@ -207,9 +197,7 @@ function Tree.do_matches(tree, word, matches, start)
   end
 
   -- FIXME This doesn’t return the actual pattern!  Bloody useless.
-  if tree[0] or (tree['.'] and word == '') then
-    if tree['.'] then start = start .. '.' end
-
+  if tree[0] then
     table.insert(matches, start)
   end
 
