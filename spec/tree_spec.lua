@@ -97,5 +97,7 @@ describe['A tree'] = function()
     local t = tree:matches('abol')
 
     expect(table.size(t)).should_be(3)
+
+    expect(table.is_equal(t, { '.abo', '.abol', 'abol.' })).should_be(true)
   end
 end
