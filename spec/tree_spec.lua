@@ -110,6 +110,6 @@ describe['A tree'] = function()
 
   it['returns patterns with hyphenation points when asked'] = function()
     tree:ingest('a1ic', 'l1g2', 'e1b', 'br4', 'e2br', '2ai2', 'eb1ra', '4ai.')
-    expect(table.is_equal(tree:matches('algebraic', true), { 'l1g2', 'e1b', 'e2br', 'eb1ra', '2ai2', 'a1ic' })).should_be(true)
+    expect(table.is_equal(tree:matches('algebraic', true), { 'l1g2', 'e1b', 'e2br', 'eb1ra', 'br4', '2ai2', 'a1ic' })).should_be(true)
   end
 end
