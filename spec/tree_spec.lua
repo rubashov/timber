@@ -105,5 +105,6 @@ describe['A tree'] = function()
     tree:ingest('a1ic', 'l1g2', 'e1b', 'br4', 'e2br', '2ai2', 'eb1ra')
     tree:insert('4ai.')
     expect(table.is_equal(tree:matches('algebraic'), { 'lg', 'ebra', 'ebr', 'eb', 'br', 'aic', 'ai' })).should_be(true)
+    expect(table.is_equal(tree:matches('Dai'), { 'ai', 'ai.' })).should_be(true)
   end
 end
