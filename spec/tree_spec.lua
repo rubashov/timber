@@ -112,4 +112,10 @@ describe['A tree'] = function()
     tree:ingest('a1ic', 'l1g2', 'e1b', 'br4', 'e2br', '2ai2', 'eb1ra', '4ai.')
     expect(table.is_equal(tree:matches('algebraic', true), { 'l1g2', 'e1b', 'e2br', 'eb1ra', 'br4', '2ai2', 'a1ic' })).should_be(true)
   end
+
+  it['hyphenates'] = function()
+    tree:ingest('io2gr', '1gr', '3raphy', 'bi3ogr', '1phy', '4graphy', '2io', 'ph1ic', 'io2gr', '1ca', '5graphic', '4aphi')
+    expect(tree:hyphenate("biography")).should_be("bi-og-ra-phy")
+    expect(tree:hyphenate("biography")).should_be("bi-o-graph-i-cal")
+  end
 end
