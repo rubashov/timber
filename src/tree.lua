@@ -170,7 +170,7 @@ function Tree.match(tree, word)
   return table.size(Tree.matches(tree, word)) > 0
 end
 
-function Tree.matches(tree, word)
+function Tree.matches(tree, word, with_hyph)
   dotted_word = '.' .. word .. '.'
   matches = { }
 
@@ -178,7 +178,7 @@ function Tree.matches(tree, word)
 
   local l = dotted_word:len()
   while l > 0 do
-    Tree.do_matches(tree, dotted_word, matches)
+    Tree.do_matches(tree, dotted_word, matches, '', with_hyph)
     _, dotted_word = dotted_word:chop()
     l = l - 1
   end
@@ -186,7 +186,7 @@ function Tree.matches(tree, word)
   return matches
 end
 
-function Tree.do_matches(tree, word, matches, start)
+function Tree.do_matches(tree, word, matches, start, with_hyph)
   if tree.tree then
     tree = tree.tree
   end
@@ -198,13 +198,17 @@ function Tree.do_matches(tree, word, matches, start)
     local t = tree[head]
 
     if t then
-      Tree.do_matches(t, tail, matches, start ..  head)
+      Tree.do_matches(t, tail, matches, start ..  head, with_hyph)
     end
   end
 
   -- FIXME This doesn’t return the actual pattern!  Bloody useless.
   if tree[0] then
-    table.insert(matches, start)
+    if with_hyph then
+      table.insert(matches, Tree.to_pattern(start, tree[0]))
+    else
+      table.insert(matches, start)
+    end
   end
 
   return matches
