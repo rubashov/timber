@@ -118,8 +118,8 @@ function Tree.dump(tree, leader, words, with_hyph)
         local word = leader
         local hyph = tail
 
-        s = Tree.to_pattern(word, hyph)
-        table.insert(words, s)
+        pattern = Tree.to_pattern(word, hyph)
+        table.insert(words, pattern)
       else
         table.insert(words, leader)
       end
@@ -138,15 +138,15 @@ end
 function Tree.to_pattern(word, hyph)
   local l = word:len()
 
-  if hyph[0] then s = tostring(hyph[0]) else s = '' end
+  if hyph[0] then pattern = tostring(hyph[0]) else pattern = '' end
   for i = 1, l do
-    s = s .. word:sub(i, i)
+    pattern = pattern .. word:sub(i, i)
     if hyph[i] then
-      s = s .. tostring(hyph[i])
+      pattern = pattern .. tostring(hyph[i])
     end
   end
 
-  return s
+  return pattern
 end
 
 -- FIXME for anchored (“dotted” patterns)
