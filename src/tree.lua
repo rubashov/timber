@@ -202,7 +202,6 @@ function Tree.do_matches(tree, word, matches, start, with_hyph)
     end
   end
 
-  -- FIXME This doesn’t return the actual pattern!  Bloody useless.
   if tree[0] then
     if with_hyph then
       table.insert(matches, Tree.to_pattern(start, tree[0]))
