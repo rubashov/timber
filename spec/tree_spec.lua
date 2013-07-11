@@ -118,4 +118,9 @@ describe['A tree'] = function()
     expect(tree:hyphenate("biography")).should_be("bi-og-ra-phy")
     expect(tree:hyphenate("biographical")).should_be("bi-o-graph-i-cal")
   end
+
+  it['hyphenates with other rules'] = function()
+    tree:ingest('1ka', 'a1p', 'p3se', '2p1s', '1se', '2eln', 'lnd2', '4ln', '2n1d', '1de', 'e1m')
+    expect(tree:hyphenate("kapselndem")).should_be("kap-seln-de-m") -- Not -kap-seln-de-m
+  end
 end
