@@ -119,8 +119,13 @@ describe['A tree'] = function()
     expect(tree:hyphenate("biographical")).should_be("bi-o-graph-i-cal")
   end
 
-  it['hyphenates with other rules'] = function()
+  it['hyphenates without leaving a leading hyphen'] = function()
     tree:ingest('1ka', 'a1p', 'p3se', '2p1s', '1se', '2eln', 'lnd2', '4ln', '2n1d', '1de', 'e1m')
     expect(tree:hyphenate("kapselndem")).should_be("kap-seln-de-m") -- Not -kap-seln-de-m
+  end
+
+  it['hyphenates without leaving a trailing hyphen'] = function()
+    tree:ingest('4r1b', 'e2it', '4t3n2', '3nehm', '1ne', '2ehm', '2h1m', '1me', 'rb2u', '4r1b', 'bunde4s', 'un1', '2n1d', 'd2es.', 'des1', '1de')
+    expect(tree:hyphenate("Arbeitnehmerbundes")).should_be("Ar-beit-neh-mer-bun-des") -- not Ar-beit-neh-mer-bun-des-
   end
 end
