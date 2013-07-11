@@ -225,15 +225,9 @@ function Tree.hyphenate(tree, word)
     i = i + 1
   end
 
-  print("FOO!")
-  print(word)
-  for _, p in ipairs(Tree.matches(ttree, word, true)) do print(p) end
-  print("FOO.")
   local s = ''
   for i = 0, 2*l do
     s = s .. word:sub(i, i)
-    -- if hyph_points[i+1] then
-    --  s = s .. tostring(hyph_points[i+1])
     if hyph_points[i+1] and hyph_points[i+1] % 2 == 1 then
       s = s .. '-'
     end
@@ -261,7 +255,6 @@ function Tree.do_hyphenate(tree, word, hyph_points, start, n)
   local hyph = tree[0]
   if hyph then
     for pos, val in pairs(hyph) do
-      if start == "biogr" then print('found! pos = ' .. tostring(pos) ..  ', val = ' .. tostring(val) .. ' (n = ' .. tostring(n)) end
       hyph_points[pos + n] = math.max(hyph_points[pos + n] or 0, val)
     end
   end
