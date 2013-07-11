@@ -1,4 +1,4 @@
-require 'lpeg'
+lpeg = lpeg or require 'lpeg'
 require 'tree'
 
 local P, C = lpeg.P, lpeg.C
