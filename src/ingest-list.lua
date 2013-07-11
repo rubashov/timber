@@ -8,15 +8,22 @@ local linepatt = C(field) * semicolon
 
 tree = Tree:new()
 
-function ingest(filename, silent)
+function ingest(filename, format, silent)
   local n = 0
   for line in io.lines(filename) do
-    local word = lpeg.match(linepatt, line)
-    tree:ingest(word)
-    if not silent then
-      print('Ingested ' .. word)
+    local word
+    if format == 1 then
+      word = lpeg.match(linepatt, line)
+    else -- default, format 0
+      word = line
     end
-    n = n + 1
+    if word then
+      tree:ingest(word)
+      if not silent then
+        print('Ingested ' .. word)
+      end
+      n = n + 1
+    end
   end
 
   print('Ingested ' .. tostring(n) .. ' words')
@@ -30,7 +37,7 @@ function main(arg)
     path = arg[1]
   end
 
-  ingest(path, silent)
+  ingest(path, 1, silent)
 end
 
 main(arg)
