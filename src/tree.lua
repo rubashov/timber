@@ -213,6 +213,60 @@ function Tree.do_matches(tree, word, matches, start, with_hyph)
   return matches
 end
 
+function Tree.hyphenate(tree, word)
+  local ttree = tree
+  dword = '.' .. word .. '.'
+  hyph_points = { }
+  tree = tree.tree
+  local i, l = 0, dword:len()
+  while i < l do
+    Tree.do_hyphenate(tree, dword, hyph_points, '', i)
+    _, dword = dword:chop()
+    i = i + 1
+  end
+
+  print("FOO!")
+  print(word)
+  for _, p in ipairs(Tree.matches(ttree, word, true)) do print(p) end
+  print("FOO.")
+  local s = ''
+  for i = 0, 2*l do
+    s = s .. word:sub(i, i)
+    -- if hyph_points[i+1] then
+    --  s = s .. tostring(hyph_points[i+1])
+    if hyph_points[i+1] and hyph_points[i+1] % 2 == 1 then
+      s = s .. '-'
+    end
+  end
+
+  return s
+end
+
+function Tree.do_hyphenate(tree, word, hyph_points, start, n)
+  if tree.tree then
+    tree = tree.tree
+  end
+  if not hyph_points then hyph_points = { } end
+  if not start then start = '' end
+
+  if word ~= '' then
+    local head, tail = word:chop()
+    local t = tree[head]
+
+    if t then
+      Tree.do_hyphenate(t, tail, hyph_points, start .. head, n)
+    end
+  end
+
+  local hyph = tree[0]
+  if hyph then
+    for pos, val in pairs(hyph) do
+      if start == "biogr" then print('found! pos = ' .. tostring(pos) ..  ', val = ' .. tostring(val) .. ' (n = ' .. tostring(n)) end
+      hyph_points[pos + n] = math.max(hyph_points[pos + n] or 0, val)
+    end
+  end
+end
+
 function table.is_equal(t1, t2)
   if table.size(t1) ~= table.size(t2) then
     return false
