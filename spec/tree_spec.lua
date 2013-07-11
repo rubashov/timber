@@ -116,6 +116,6 @@ describe['A tree'] = function()
   it['hyphenates'] = function()
     tree:ingest('io2gr', '1gr', '3raphy', 'bi3ogr', '1phy', '4graphy', '2io', 'ph1ic', 'io2gr', '1ca', '5graphic', '4aphi')
     expect(tree:hyphenate("biography")).should_be("bi-og-ra-phy")
-    expect(tree:hyphenate("biography")).should_be("bi-o-graph-i-cal")
+    expect(tree:hyphenate("biographical")).should_be("bi-o-graph-i-cal")
   end
 end
