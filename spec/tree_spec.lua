@@ -128,4 +128,9 @@ describe['A tree'] = function()
     tree:ingest('4r1b', 'e2it', '4t3n2', '3nehm', '1ne', '2ehm', '2h1m', '1me', 'rb2u', '4r1b', 'bunde4s', 'un1', '2n1d', 'd2es.', 'des1', '1de')
     expect(tree:hyphenate("Arbeitnehmerbundes")).should_be("Ar-beit-neh-mer-bun-des") -- not Ar-beit-neh-mer-bun-des-
   end
+
+  it['shows the hyphenation values'] = function()
+    tree:ingest('4r1b', 'e2it', '4t3n2', '3nehm', '1ne', '2ehm', '2h1m', '1me', 'rb2u', '4r1b', 'bunde4s', 'un1', '2n1d', 'd2es.', 'des1', '1de')
+    expect(tree:hyphenate("Arbeitnehmerbundes", true)).should_be("A4r1be2i4t3n2e2h1me4r1b2u2n1d2e4s")
+  end
 end

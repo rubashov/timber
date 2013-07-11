@@ -213,7 +213,7 @@ function Tree.do_matches(tree, word, matches, start, with_hyph)
   return matches
 end
 
-function Tree.hyphenate(tree, word)
+function Tree.hyphenate(tree, word, show_hyph)
   dword = '.' .. word .. '.'
   hyph_points = { }
   tree = tree.tree
@@ -227,8 +227,14 @@ function Tree.hyphenate(tree, word)
   local s = ''
   for i = 1, l - 2 do
     s = s .. word:sub(i, i)
-    if hyph_points[i+1] and hyph_points[i+1] % 2 == 1 and i < l - 2 then
-      s = s .. '-'
+    if hyph_points[i+1] and i < l - 2 then
+      if show_hyph then
+        s = s .. tostring(hyph_points[i+1])
+      else
+        if hyph_points[i+1] % 2 == 1 then
+          s = s .. '-'
+        end
+      end
     end
   end
 
