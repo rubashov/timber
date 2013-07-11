@@ -226,7 +226,7 @@ function Tree.hyphenate(tree, word)
   end
 
   local s = ''
-  for i = 0, 2*l do
+  for i = 0, l do
     s = s .. word:sub(i, i)
     if hyph_points[i+1] and hyph_points[i+1] % 2 == 1 then
       s = s .. '-'
