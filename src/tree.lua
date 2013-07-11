@@ -220,7 +220,7 @@ function Tree.hyphenate(tree, word)
   tree = tree.tree
   local i, l = 0, dword:len()
   while i < l do
-    Tree.do_hyphenate(tree, dword, hyph_points, '', i)
+    Tree.do_hyphenate(tree, dword, hyph_points, i)
     _, dword = dword:chop()
     i = i + 1
   end
@@ -236,19 +236,18 @@ function Tree.hyphenate(tree, word)
   return s
 end
 
-function Tree.do_hyphenate(tree, word, hyph_points, start, n)
+function Tree.do_hyphenate(tree, word, hyph_points, n)
   if tree.tree then
     tree = tree.tree
   end
   if not hyph_points then hyph_points = { } end
-  if not start then start = '' end
 
   if word ~= '' then
     local head, tail = word:chop()
     local t = tree[head]
 
     if t then
-      Tree.do_hyphenate(t, tail, hyph_points, start .. head, n)
+      Tree.do_hyphenate(t, tail, hyph_points, n)
     end
   end
 
