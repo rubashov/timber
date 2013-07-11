@@ -214,7 +214,6 @@ function Tree.do_matches(tree, word, matches, start, with_hyph)
 end
 
 function Tree.hyphenate(tree, word)
-  local ttree = tree
   dword = '.' .. word .. '.'
   hyph_points = { }
   tree = tree.tree
